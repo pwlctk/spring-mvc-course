@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nie wiem jak to działa</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}"/>
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+
+
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Klient</td>
+            <td>Nazwisko</td>
+        </tr>
+        </thead>
+        <tbody th:each="customer:${customers}">
+        <tr>
+            <td th:text="${customer.firstname}"/>
+            <td th:text="${customer.lastname}"/>
+            <td>
+                <a th:href="${'/customer?id='+customer.id}">Podgląd</a>
+                <a th:href="${'/customer/delete/'+customer.id}">Usuń</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-large btn-dark" th:href="@{/customer/create}" th:text="'Create'"/>
+</div>
+</body>
+</html>
